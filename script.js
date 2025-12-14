@@ -1,9 +1,10 @@
 function onYouTubeIframeAPIReady() {
   console.log("YouTube Iframe API Loaded");
 }
-let api_key = "AIzaSyCTBI0W7IC2hFOrv41_Z-onaiqddxi8ZPQ";
+let api_key = "AIzaSyBsb-Qbs0iF9k8ICdh69UUGKL_AaaeCtKA";
 let video_http = "https://www.googleapis.com/youtube/v3/videos?";
 let channel_http = "https://www.googleapis.com/youtube/v3/channels?";
+let search_http = "https://www.googleapis.com/youtube/v3/search?";
 
 const videoCardContaier = document.querySelector(".video-container");
 const videoPlayerSection = document.getElementById("videoPlayerSection");
@@ -102,4 +103,46 @@ function openVideoPlayer(videoId) {
   document.getElementById('channelIconDetail').src = currentVideoData.channelThumbnail;
   document.getElementById('channelTitleDetail').textContent = currentVideoData.snippet.channelTitle;
   document.getElementById('video-description').textContent = currentVideoData.snippet.description;
+}
+const searchInput= document.querySelector('.search-bar');
+const searchButton= document.querySelector('.search-btn');
+
+searchButton.addEventListener('click', ()=>{
+  if(searchInput.value.length){
+    //trigger search video function
+     searchVideos(searchInput.value);
+  }
+});
+searchButton.addEventListener('keypress', ()=>{
+  if(e.key === 'Enter' && searchInput.value.length){
+    //trigger search video function
+    searchVideos(searchInput.value);
+  }
+});
+
+function searchVideos(query){
+
+  videoCardContaier.innerHTML= '';
+
+  //reset my UI
+  videoPlayerSection.style.display = "none";
+  mainVideoContainer.style.display = "grid";
+  document.querySelector(".filter").style.display = "flex";
+
+fetch(search_http + new URLSearchParams({
+  key: api_key,
+  part: 'snippet',
+  maxResults: 20,
+  q: query,
+  type: 'video'
+})).then(res => res.json())
+.then(data => {
+  data.items.forEach(item => {
+    let video = {
+      id: item.id.videoId,
+      snippet: item.snippet
+    };
+    getChannelIcon(video)
+  })
+}).catch(err => console.log(err))
 }

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youtube-Clone</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Make a navbar-->
+    <nav class="navbar">
+      <div class="toggle-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <img src="youtubelogo.png" alt="logo" class="youtube-logo" />
+      <div class="search-box">
+        <input type="text" class="search-bar" placeholder="Search" />
+        <button class="search-btn">
+          <img src="search_icon.png" alt="search" />
+        </button>
+      </div>
+      <!--useroptions-->
+      <div class="user-options">
+        <img src="create-logo.png" class="icon" alt="create video" />
+        <img src="grid-logo.png" class="icon" alt="apps" />
+        <img src="bell-icon.png" class="icon" alt="notifications" />
+        <div class="user-dp">
+          <img src="profile-icon.jpg" alt="pp" />
+        </div>
+      </div>
+    </nav>
+    <!--Sidebar-->
+    <div class="side-bar">
+      <a href="#" class="link active" style="background-color: lightgrey"
+        ><img src="home-icon.png" alt="" />Home</a
+      >
+      <a href="#" class="link"
+        ><img src="explore-icon.png" alt="" />Explore</a
+      >
+      <a href="#" class="link"
+        ><img src="subscription-icon.png" alt="" />Subscription</a
+      >
+
+      <hr class="separator" />
+
+      <a href="#" class="link"
+        ><img src="library-icon.png" alt="" />Library</a
+      >
+      <a href="#" class="link"
+        ><img src="history-icon.png" alt="" />History</a
+      >
+      <a href="#" class="link"
+        ><img src="your-video-icon.png" alt="" />Your Videos</a
+      >
+      <a href="#" class="link"
+        ><img src="watch-later-icon.png" alt="" />WatchLater</a
+      >
+    </div>
+    <!--Video player section-->
+    <div class="video-player" id="videoPlayerSection">
+      <div class="player-container">
+        <div id="videoPlayer"></div>
+
+        <div class="video-info">
+          <h2 id="videoTitle">Web Devlopment Masterclass Tutorial</h2>
+          <div class="video-stats">
+            <span id="viewCount">2.4M Views</span>
+            <span id="publishDate">premiered 1 week ago</span>
+          </div>
+          <div class="video-details">
+            <div class="channel-info">
+              <img
+                src=" "
+                alt="channel logo"
+                class="channel-logo-lg"
+                id="channelIconDetail"
+              />
+              <div class="channel-meta">
+                <h3 id="channelTitleDetail">Web Dev Class</h3>
+                <span id="subscribersCount">2.4M subscribers</span>
+              </div>
+              <button class="subscriber-btn">Subscribe</button>
+            </div>
+            <div class="video-actions">
+              <button class="action-btn"><img src="youtube-like-icon.png" alt="like" />25K</button>
+            </div>
+            <div class="video-description">
+              learn web dev from scratch in this comprehensive masterclass
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Filter Options-->
+    <div class="filter">
+      <button class="filter-options">All</button>
+      <button class="filter-options">web dev</button>
+      <button class="filter-options">CSS</button>
+      <button class="filter-options">HTML</button>
+      <button class="filter-options">Javascript</button>
+      <button class="filter-options">AI</button>
+      <button class="filter-options">ML</button>
+      <button class="filter-options">Trending</button>
+    </div>
+    <!--Video container-->
+    <div class="video-container" id="mainVideoContainer">
+      <!--Videos will be injected here -->
+    </div>
+<script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script> 
+  </body>
+</html>
